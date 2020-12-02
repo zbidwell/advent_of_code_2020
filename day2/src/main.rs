@@ -14,18 +14,11 @@ fn main() {
 }
 
 fn part1(lines: Vec<String>) -> usize {
-    lines
-        .into_iter()
-        .filter(|s| validate1(s))
-        .count()
-
+    lines.into_iter().filter(|s| validate1(s)).count()
 }
 
 fn part2(lines: Vec<String>) -> usize {
-    lines
-        .into_iter()
-        .filter(|s| validate2(s))
-        .count()
+    lines.into_iter().filter(|s| validate2(s)).count()
 }
 
 fn validate1(line: &str) -> bool {
@@ -48,9 +41,12 @@ fn validate2(line: &str) -> bool {
     let i = captures.get(1).unwrap().as_str().parse::<usize>().unwrap();
     let j = captures.get(2).unwrap().as_str().parse::<usize>().unwrap();
     let letter = captures.get(3).unwrap().as_str().chars().next().unwrap();
-    let password = captures.get(4).unwrap().as_str().chars().collect::<Vec<char>>();
+    let password = captures
+        .get(4)
+        .unwrap()
+        .as_str()
+        .chars()
+        .collect::<Vec<char>>();
 
     (password[i - 1] == letter) ^ (password[j - 1] == letter)
 }
-
-
